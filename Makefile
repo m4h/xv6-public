@@ -159,6 +159,7 @@ mkfs: mkfs.c fs.h
 .PRECIOUS: %.o
 
 UPROGS=\
+  _show\
 	_cat\
 	_echo\
 	_forktest\
@@ -233,6 +234,10 @@ qemu-gdb: fs.img xv6.img .gdbinit
 qemu-nox-gdb: fs.img xv6.img .gdbinit
 	@echo "*** Now run 'gdb'." 1>&2
 	$(QEMU) -nographic $(QEMUOPTS) -S $(QEMUGDB)
+
+xv6: fs.img xv6.img
+	$(QEMU) -nographic $(QEMUOPTS)
+
 
 # CUT HERE
 # prepare dist for students
